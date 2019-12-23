@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Dan Wood" />
+    <meta
+      name="description"
+      content="The personal blog of Dan Wood (@valtism). Guides and thoughts served as lightweight as possible."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sourcing multiple images from JSON in Gatsby</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href="index.html">Valty's Notes</a></h1>
+    </header>
+    <main>
+      <h2>Sourcing multiple images from JSON in Gatsby</h2>
+      <p>
+        Starting to use <a href="https://www.gatsbyjs.org">GatsbyJS</a>, you can
+        see how to serve up a single image using the built in
+        <code>&lt;Img /&gt;</code> component, but serving multiple images is a
+        bit trickier.
+      </p>
+      <aside>
+        <p class="text-bold">Note</p>
+        <p>
+          We will be using the
+          <a href="https://www.github.com/gatsbyjs/gatsby-starter-default"
+            >Gatsby Default Starter</a
+          >
+          in this example
+        </p>
+      </aside>
+      <p>
+        In this example, let's say we have some pictures of flowers we would
+        like to display along with their names. Let's add them to our project in
+        a folder called <code>flowers</code> at <code>src/images/flowers</code>
+      </p>
+      <p>
+        Next, we want to add our JSON with information on each flower to
+        <code>src/data/Flowers.json</code>
+      </p>
+      <pre><p>Flowers.json</p>[
+  {
+    "name": "Rose",
+    "src": "../images/flowers/flower-1.jpeg"
+  },
+  {
+    "name": "Violet",
+    "src": "../images/flowers/flower-2.jpeg"
+  },
+  {
+    "name": "Lavender",
+    "src": "../images/flowers/flower-3.jpeg"
+  }
+]</pre>
+      <p>
+        In order to work with JSON files, Gatsby needs a plugin called
+        <a href="https://www.gatsbyjs.org/packages/gatsby-transformer-json/"
+          >gatsby-transformer-json</a
+        >. This lets GraphQL queries find and process your JSON.
+      </p>
+      <p>
+        Install the plugin using
+        <code>npm install --save gatsby-transformer-json</code> then add the
+        following to your <code>gatsby-config.js</code>
+        <code>plugins</code> array:
+      </p>
+      <pre><p>gatsby-config.js</p>`gatsby-transformer-json`,
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    path: `./src/data/`,
+  },
+},</pre>
+      <p>
+        Now, when we run <code>gatsby develop</code> we should be able to use
+        GraphiQL to see our JSON file. Open up
+        <a href="https://www.gatsbyjs.org/docs/running-queries-with-graphiql/"
+          >GraphiQL</a
+        >
+        and run the following query:
+      </p>
+      <pre>
+query MyQuery {
+  allFlowersJson {
+    nodes {
+      name
+      src {
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+    }
+  }
+}</pre
+      >
+      <p>This should give you an output that looks like this:</p>
+      <pre>
+{
+  "data": {
+    "allFlowersJson": {
+      "nodes": [
+        {
+          "name": "Rose",
+          "src": {
+            "childImageSharp": {
+              "fluid": {
+                "src": "/static/8cb893854de0297ac9b460c1b75daadd/b17c1/flower-1.jpg"
+              }
+            }
+          }
+        },
+        {
+          "name": "Violet",
+          "src": {
+            "childImageSharp": {
+              "fluid": {
+                "src": "/static/51df185e9a48850a6e8ed2678e060c99/ca45b/flower-2.jpg"
+              }
+            }
+          }
+        },
+        {
+          "name": "Lavender",
+          "src": {
+            "childImageSharp": {
+              "fluid": {
+                "src": "/static/a4ab0eccf7b88fdd9b9ead3cccb975d1/b17c1/flower-3.jpg"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}</pre
+      >
+      <aside>
+        <p class="text-bold">Warning</p>
+        <p>
+          If you get an error that says
+          <code
+            >Field \"src\" must not have a selection since type \"String\" has
+            no subfields</code
+          >
+          double check the <code>src</code> paths in your JSON file. Gatsby will
+          automatically transfrom those strings to file paths, but only if it
+          can find a match for the relative path you provide.
+        </p>
+      </aside>
+      <p>
+        Now that we have seen how we can access these files using GraphQL, we
+        can query them inside a component. Let's create one in
+        <code>src/components</code>
+      </p>
+      <pre><p>flowers.js</p>import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+
+export const Flowers = () =&gt; {
+  const data = useStaticQuery(graphql`
+    query {
+      allFlowersJson {
+        nodes {
+          name
+          src {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    &lt;div&gt;
+      {data.allFlowersJson.nodes.map(flower =&gt; (
+        &lt;div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}&gt;
+          &lt;div&gt;{flower.name}&lt;/div&gt;
+          &lt;Img fluid={flower.src.childImageSharp.fluid} /&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}</pre>
+      <p>
+        Now, all we need to do is add this component to <code>index.js</code> or
+        wherever we want to display it.
+      </p>
+      <pre><p>index.js</p>import React from "react"
+import { Link } from "gatsby"
+
+import Layout from "../components/layout"
+import Image from "../components/image"
+import SEO from "../components/seo"
+import { Flowers } from "../components/flowers"
+
+const IndexPage = () =&gt; (
+  &lt;Layout&gt;
+    &lt;SEO title="Home" /&gt;
+    &lt;h1&gt;Hi people&lt;/h1&gt;
+    &lt;p&gt;Welcome to your new Gatsby site.&lt;/p&gt;
+    &lt;p&gt;Now go build something great.&lt;/p&gt;
+    &lt;div style={{
+      display: `inline-block`,
+      width: `300px`,
+      marginBottom: `1.45rem`,
+    }}&gt;
+      &lt;Image /&gt;
+    &lt;/div&gt;
+    &lt;Flowers /&gt;
+    &lt;Link to="/page-2/"&gt;Go to page 2&lt;/Link&gt;
+  &lt;/Layout&gt;
+)
+
+export default IndexPage</pre>
+      <p>And here's the result:</p>
+      <img
+        src="gatsby-multiple-images-json-result.jpg"
+        alt="The end result, showing all 3 images rendered to the page with their respective names above."
+      />
+      <p>
+        That's how you can sourse images in Gatsby from JSON documents. If you
+        want, you can add more properties to your JSON, just be sure to add them
+        to your GraphQL query so they get returned for you to use.
+      </p>
+      <aside>
+        <p class="text-bold">Tip</p>
+        <p>
+          If you only need multiple images, and not any other data, you can
+          retrieve them using <code>allImageSharp</code>. You don't need
+          <code>gatsby-transformer-json</code> to do this.
+        </p>
+      </aside>
+    </main>
+    <footer>
+      <div>Published 2019-12-23</div>
+      <div>By Dan Wood (@valtism)</div>
+    </footer>
+  </body>
+</html>
