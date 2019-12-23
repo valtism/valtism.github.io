@@ -23,6 +23,7 @@ a {
 
 img {
   max-width: 55ch;
+  width: 90%;
   display: block;
   margin: auto;
   margin-bottom: 2rem;
