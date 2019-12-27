@@ -7,7 +7,6 @@ html {
   color: #2d3748;
 }
 
-
 h1 {
   color: #4299e1;
   font-family: cursive;
@@ -85,7 +84,7 @@ footer {
   margin-top: 4rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #4a5568;
+  color: #A0AEC0;
   font-size: 0.875rem;
 }
 
@@ -95,7 +94,7 @@ footer div:hover {
 }
 
 .text-light {
-  color: #4a5568;
+  color: #A0AEC0;
 }
 
 .text-xs {
