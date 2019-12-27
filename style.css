@@ -84,7 +84,7 @@ footer {
   margin-top: 4rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #A0AEC0;
+  color: #a0aec0;
   font-size: 0.875rem;
 }
 
@@ -94,7 +94,11 @@ footer div:hover {
 }
 
 .text-light {
-  color: #A0AEC0;
+  color: #a0aec0;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-xs {
