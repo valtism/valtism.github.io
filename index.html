@@ -9,34 +9,44 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/style.css" />
     <title>Valty's Notes</title>
   </head>
-  <body>
-    <header>
-      <h1><a href="index.html">Valty's Notes</a></h1>
+  <body class="text-gray-900">
+    <header class="max-w-xl mx-auto flex">
+      <h1 class="text-4xl text-blue-600 font-serif my-4">
+        <a href="../index.html">Valty's Notes</a>
+      </h1>
+      <div class="flex-1"></div>
+      <button
+        class="border-2 border-indigo-400 tracking-wide px-3 py-2 rounded m-auto"
+      >
+        <a href="https://valtism.com/resume/">My Résumé</a>
+      </button>
     </header>
-    <main>
-      <h3 class="text-bold"><a href="https://valtism.com/resume/">My Résumé</a></h3>
-      <div class="text-bold">2019</div>
+    <main class="max-w-xl mx-auto my-4">
+      <div class="font-bold">2019</div>
       <div>
-        <a href="why-trans-discussions-are-one-sided.html"
+        <a
+          class="border-b-2 border-indigo-400"
+          href="src/why-trans-discussions-are-one-sided.html"
           >Why trans discussions are one-sided</a
         >
       </div>
       <div>
-        <a href="gatsby-multiple-images-json.html"
+        <a
+          class="border-b-2 border-indigo-400"
+          href="src/gatsby-multiple-images-json.html"
           >Sourcing multiple images from JSON in Gatsby</a
         >
       </div>
     </main>
-    <footer>
-      <div>By Dan Wood (@valtism)</div>
+    <footer class="text-center my-10 text-sm text-gray-700 hover:text-gray-900">
       <div>
-        <a href="https://github.com/valtism/valtism.github.io/"
-          >View this source on Github</a
-        >
+        By Dan Wood
+        <a class="underline" href="https://github.com/valtism/">(@valtism)</a>
       </div>
+      <div></div>
     </footer>
   </body>
 </html>
