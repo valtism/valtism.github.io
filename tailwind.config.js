@@ -9,7 +9,11 @@ module.exports = {
     conicGradients: theme => ({
       colors: theme("colors")
     }),
-    extend: {}
+    extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"]
+      }
+    }
   },
   variants: {},
   plugins: [require("tailwindcss-gradients")()]

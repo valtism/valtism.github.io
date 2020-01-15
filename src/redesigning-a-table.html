@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Table design</title>
+  </head>
+  <body class="text-gray-900 bg-gradient-b-gray-300">
+    <header class="max-w-xl mx-auto">
+      <h1 class="text-4xl text-blue-600 font-serif my-4">
+        <a href="../index.html">Valty's Notes</a>
+      </h1>
+      <div class="text-gray-600 uppercase text-xs">January 2020</div>
+    </header>
+
+    <main class="max-w-xl mx-auto font-sans">
+      <h2 class="text-2xl font-bold mt-3 mb-2">Redesigning a table</h2>
+      <div class="my-4 text-gray-600 hover:text-gray-900">
+        TL;DR: You can see the new design
+        <a
+          class="border-b-2 border-indigo-300 hover:border-indigo-500"
+          href="#table"
+          >down here</a
+        >
+      </div>
+      <p class="my-4">
+        I stumbled across
+        <a
+          class="border-b-2 border-indigo-500"
+          href="https://www.reddit.com/r/web_design/comments/eoif4g/is_this_table_design_appealing_and_not_confusing/"
+          >this post</a
+        >
+        on reddit asking for feedback on a table design. I thought I'd use this
+        as a chance to implement some of design principles I've been learning.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg"
+          src="redesigning-a-table-original.png"
+          alt="A table showing availability of hotel rooms"
+        />
+        <div class="text-gray-600 my-2">The original design</div>
+      </div>
+      <p class="my-4">
+        My first impressions was that the design was very busy. There was a lot
+        of information in the table, and most my attention was being pulled away
+        to the brightly coloured buttons around the outside. I think that the
+        main issue was a lack of hierarchy. The solid buttons all looked like
+        primary action buttons, while the content of the table took a back seat
+        in terms of importance.
+      </p>
+      <p class="my-4">
+        My first priority is to subdue the action buttons. I default to 3 main
+        button styles in my designs: A primary button with a solid background
+        (like the original design had), a secondary style with a neutral
+        background &amp; coloured border, and a tertiary style with just a
+        bottom border underline.
+      </p>
+      <p class="my-4">
+        I was also tossing up going for a style of button that was neutral when
+        unselected, and had a dark neutral background when activated, as if
+        pressed into the page. In the end I opted for the tertiary style,
+        although both would have worked here.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg"
+          src="redesigning-a-table-header-buttons.png"
+          alt="Buttons in a tertiary underline style"
+        />
+        <div class="text-gray-600 my-2">Tertiary styled buttons</div>
+      </div>
+      <p class="my-4">
+        I right-aligned the buttons to provide a little separation. This way,
+        the buttons could be more easily recognised as buttons when not enabled.
+      </p>
+      <div class="text-center text-3xl leading-none">❦ ❦ ❦</div>
+      <p class="my-4">
+        The next issue I wanted to tackle was the table itself. There was a lot
+        of information, and I wanted to highlight the important parts. Because I
+        didn't know what the exact use case of this table was, it's hard say
+        what information should be emphasised.
+      </p>
+      <p class="my-4">
+        What I did instead was to try and group related information. Right away,
+        I could see that the floor and block columns could be combined and
+        separated with a bullet mark to reduce horizontal space. I then took
+        this and added it under the room name as I felt that they could all be
+        bundled as related information.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg inline-block"
+          src="redesigning-a-table-room.png"
+          alt="The room name, with floor and block information below it"
+        />
+        <div class="text-gray-600 my-2">
+          Updated room, floor and block information
+        </div>
+      </div>
+      <p class="my-4">
+        It is easy to fall into the trap of thinking that table cells can only
+        hold one line of information. Stacking secondary info below can be a
+        powerful way to supercharge your tables. I made the floor and block
+        information smaller and grey to de-emphasise it compared to the room
+        name. Since "floor" and "block" were repeated label information, I made
+        them uppercase so they draw less attention.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg inline-block"
+          src="redesigning-a-table-tenants.png"
+          alt="The tenant and availability information in a single column"
+        />
+        <div class="text-gray-600 my-2">
+          Updated tenant and availability information
+        </div>
+      </div>
+      <p class="my-4">
+        I gave a similar treatment to the tenants and vacancy, adding some more
+        information about how many spaces there are total.
+      </p>
+      <div class="text-center text-3xl leading-none">❦ ❦ ❦</div>
+      <p class="my-4">
+        The green text highlighting for status was nice. Having colour makes the
+        list more scannable and easier to digest. Here, I tweaked it a bit using
+        inspiration from
+        <a
+          class="border-b-2 border-indigo-500"
+          href="https://twitter.com/steveschoger/status/1030141801158594560?lang=en"
+          >Steve Schoger</a
+        >
+        (like most of the inspiration for this design) and used coloured pill
+        boxes to wrap around the text.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg inline-block"
+          src="redesigning-a-table-status.png"
+          alt="The statuses displayed in coloured pill boxes"
+        />
+        <div class="text-gray-600 my-2">
+          Statuses contained in pill boxes
+        </div>
+      </div>
+      <p class="my-4">
+        Lastly, I looked at the action buttons on the right of each row. I was
+        considering having a primary button here, and having it only visible on
+        hover. That way, you are only showing a single primary button at a time.
+        It is good to have a single primary call to action button visible on the
+        page at one time.
+      </p>
+      <p class="my-4">
+        I decided this wouldn't work here because there were two buttons that
+        would have too much weight with both being primary. After cycling
+        through a few designs with secondary and tertiary style buttons, I saw
+        <a
+          class="border-b-2 border-indigo-500"
+          href="https://twitter.com/steveschoger/status/913062604540653568"
+          >this design</a
+        >
+        (again, Steve Schoger) which just had them as coloured links. It struck
+        me that sometimes the button you want is actually just a link.
+      </p>
+      <div class="text-center">
+        <img
+          class="rounded shadow-lg inline-block"
+          src="redesigning-a-table-actions.png"
+          alt="Action buttons as links"
+        />
+        <div class="text-gray-600 my-2">
+          Action buttons as links
+        </div>
+      </div>
+      <div class="text-center text-3xl leading-none">❦ ❦ ❦</div>
+      <p class="my-4">
+        The last touches were for some overall tweaks to bring it all together.
+        I used a darker background with a white table colour so we could get rid
+        of the table border altogether. I lightened the heading names to
+        de-emphasise them. Finally, I chose a nice font to give it a unique
+        feeling. For this design, I went with
+        <a
+          class="border-b-2 border-indigo-500"
+          href="https://fonts.google.com/specimen/Montserrat"
+          >Montserrat</a
+        >
+        which is free from Google Fonts.
+      </p>
+      <p class="my-4">
+        The final design I prototyped below is not totally implemented. I am
+        unable to simulate hiding and showing of the "Book" and "Check in"
+        buttons without implementing it in React, but you'll get the idea of the
+        design.
+      </p>
+      <div class="my-10"></div>
+    </main>
+  </body>
+
+  <h2 class="max-w-4xl mx-auto text-2xl font-bold">The final design</h2>
+
+  <div
+    id="table"
+    class="max-w-4xl mx-auto bg-gray-200 p-2 m-4 rounded-lg font-montserrat shadow-2xl"
+  >
+    <h1 class="text-2xl font-extrabold font-sans">Rooms</h1>
+    <div class="flex my-4">
+      <input
+        class="border rounded px-2 mr-2 shadow-inner"
+        type="text"
+        placeholder="Search by room number"
+      />
+      <select class="mx-2 bg-white" name="sharingType" id="sharing">
+        <option value="All">Sharing Type (All)</option>
+        <option value="1">1 Sharing</option>
+        <option value="2">2 Sharing</option>
+        <option value="3">3 Sharing</option>
+        <option value="4">4 Sharing</option>
+      </select>
+      <div class="flex-1"></div>
+      <button class="mx-2 text-sm tracking-wide border-b-2 border-indigo-500">
+        Booked
+      </button>
+      <button class="mx-2 text-sm tracking-wide border-b-2 border-indigo-500">
+        Available
+      </button>
+      <button class="mx-2 text-sm tracking-wide border-b-2 border-indigo-500">
+        Occupied
+      </button>
+      <button class="mx-2 text-sm tracking-wide border-b-2 border-indigo-500">
+        All
+      </button>
+    </div>
+    <table class="w-full">
+      <thead class="text-left bg-gray-400">
+        <tr>
+          <th class="py-1 uppercase text-gray-800 rounded-tl px-4">Room</th>
+          <th class="py-1 uppercase text-gray-800 px-4">Sharing</th>
+          <th class="py-1 uppercase text-gray-800 px-4">Tenants</th>
+          <th class="py-1 uppercase text-gray-800 px-4">Status</th>
+          <th class="py-1 uppercase text-gray-800 rounded-tr px-4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:01</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 0 • Block 1</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">1-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 1</div>
+            <div>
+              <span>1</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-green-300 py-px px-2 rounded-full">Available</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:02</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 0 • Block 1</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">1-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 1</div>
+            <div>
+              <span>1</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-green-300 py-px px-2 rounded-full">Available</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:101</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 1 • Block 1</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">2-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>2 / 2</div>
+            <div>
+              <span>0</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-gray-300 py-px px-2 rounded-full">Occupied</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:102</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 1 • Block 1</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">2-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 2</div>
+            <div>
+              <span>2</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-green-300 py-px px-2 rounded-full">Available</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:01</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 0 • Block 2</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">3-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 3</div>
+            <div>
+              <span>3</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-green-300 py-px px-2 rounded-full">Available</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100 border-b">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:02</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 0 • Block 2</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">3-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 3</div>
+            <div>
+              <span>0</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-yellow-300 py-px px-2 rounded-full">Booked</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white hover:bg-indigo-100">
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>Room:101</div>
+            <div>
+              <span class="text-xs uppercase text-gray-700"
+                >Floor 1 • Block 2</span
+              >
+            </div>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top">4-sharing</td>
+          <td class="px-4 pt-4 pb-2 align-top">
+            <div>0 / 4</div>
+            <div>
+              <span>4</span>
+              <span class="text-xs uppercase text-gray-700">available</span>
+            </div>
+          </td>
+          <td class="pr-4 pl-2 pt-4 pb-2 align-top">
+            <span class="bg-green-300 py-px px-2 rounded-full">Available</span>
+          </td>
+          <td class="px-4 pt-4 pb-2 align-top text-center">
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Book</a
+            >
+            <span class="text-gray-500">|</span>
+            <a class="text-indigo-400 hover:underline" href="javascript:void(0)"
+              >Check in</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="my-10"></div>
+
+  <footer
+    class="bg-gray-800 text-center pt-10 pb-20 border-t-2 border-gray-900"
+  >
+    <div class="text-gray-300 uppercase text-sm">
+      Published 15 January 2020
+    </div>
+    <div class="text-gray-100">
+      By Dan Wood
+      <a class="underline" href="https://github.com/valtism/">(@valtism)</a>
+    </div>
+  </footer>
+</html>
