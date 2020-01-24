@@ -1,4 +1,18 @@
 Post Ideas
 
 Don't block input types (## -> number)
-Add link to best-of-decade
+
+Simple react with Parcel
+    "@babel/core": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    Script tag in html
+    .babelrc with {
+	"presets": ["@babel/preset-react"]
+    } in it
+
+Create react app over parcel and the complexity of setups
+
+Simple setup for CRA and tawilwind with purgecss
