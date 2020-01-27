@@ -16,3 +16,5 @@ Simple react with Parcel
 Create react app over parcel and the complexity of setups
 
 Simple setup for CRA and tawilwind with purgecss
+
+Most important bookmark
