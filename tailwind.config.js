@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ["./src/**/*.js"],
   theme: {
     linearGradients: theme => ({
       colors: theme("colors")

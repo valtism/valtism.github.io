@@ -4,8 +4,8 @@
   "description": "The personal blog of Dan Wood (@valtism)",
   "main": "index.js",
   "scripts": {
-    "start": "postcss src/tailwind.src.css -o src/style.css --watch",
-    "build": "postcss src/tailwind.src.css -o src/style.css --env production"
+    "start": "tailwind build src/tailwind.src.css -o src/style.css --watch",
+    "build": "tailwind build src/tailwind.src.css -o src/style.css --env production"
   },
   "repository": {
     "type": "git",
@@ -21,11 +21,7 @@
   },
   "homepage": "https://github.com/valtism/valtism.github.io#readme",
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^1.3.0",
-    "autoprefixer": "^9.7.6",
-    "cssnano": "^4.1.10",
-    "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.3.5",
+    "tailwindcss": "^1.4.6",
     "tailwindcss-border-gradients": "^2.0.3",
     "tailwindcss-gradients": "^2.3.1"
   }
