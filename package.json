@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/valtism/valtism.github.io#readme",
   "dependencies": {
+    "@tailwindcss/typography": "^0.1.2",
     "tailwindcss": "^1.4.6",
     "tailwindcss-border-gradients": "^2.0.3",
     "tailwindcss-gradients": "^2.3.1"
