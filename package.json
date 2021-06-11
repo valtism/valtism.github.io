@@ -4,8 +4,10 @@
   "description": "The personal blog of Dan Wood (@valtism)",
   "main": "index.js",
   "scripts": {
-    "start": "tailwind build src/tailwind.src.css -o src/style.css --watch",
-    "build": "tailwind build src/tailwind.src.css -o src/style.css --env production"
+    "start": "npm run tailwind & npm run serve",
+    "serve": "live-server . --wait=200 --watch='./index.html','./src/**/*.html','./src/**/*.js'",
+    "tailwind": "tailwind build -i src/tailwind.src.css -o src/style.css --watch",
+    "build": "tailwind build -i src/tailwind.src.css -o src/style.css --env production"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,10 @@
   },
   "homepage": "https://github.com/valtism/valtism.github.io#readme",
   "dependencies": {
-    "@tailwindcss/typography": "^0.1.2",
-    "tailwindcss": "^1.4.6",
-    "tailwindcss-border-gradients": "^2.0.3",
-    "tailwindcss-gradients": "^2.3.1"
+    "@tailwindcss/typography": "^0.4.1",
+    "autoprefixer": "^10.2.6",
+    "live-server": "^1.2.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.0-canary.14"
   }
 }

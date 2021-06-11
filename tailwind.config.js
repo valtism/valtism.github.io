@@ -1,26 +1,13 @@
 module.exports = {
-  purge: ["./src/**/*.js"],
+  mode: "jit",
+  purge: ["./index.html", "./src/**/*.{html,js}"],
   theme: {
-    linearGradients: (theme) => ({
-      colors: theme("colors"),
-    }),
-    radialGradients: (theme) => ({
-      colors: theme("colors"),
-    }),
-    conicGradients: (theme) => ({
-      colors: theme("colors"),
-    }),
     extend: {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
-  variants: {
-    textColor: ["responsive", "hover", "focus", "group-hover"],
-  },
-  plugins: [
-    require("tailwindcss-gradients")(),
-    require("@tailwindcss/typography"),
-  ],
+  variants: {},
+  plugins: [],
 };
